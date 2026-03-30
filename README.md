@@ -11,6 +11,6 @@ Simple client-side library/bookstore project.
 
 ## Run
 1. Open index.html in a browser.
-2. Or run local server: https://rainbow-cobbler-5c36ff.netlify.app/
+Live Preview : https://rainbow-cobbler-5c36ff.netlify.app/
 
 
