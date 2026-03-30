@@ -13,5 +13,4 @@ Simple client-side library/bookstore project.
 1. Open index.html in a browser.
 2. Or run local server: https://rainbow-cobbler-5c36ff.netlify.app/
 
-## Notes
-- This repository is already pushed to https://github.com/satishjadav01/Library_Management.
+
