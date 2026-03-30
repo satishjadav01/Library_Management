@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PageTurn – A modern bookstore to discover, read, and bookmark your favourite books." />
+  <title>PageTurn – Your Modern Bookstore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       AUTH SECTION  (login / register views)
+  ═══════════════════════════════════════ -->
+  <section id="auth-section" class="auth-section" aria-label="Authentication">
+
+    <!-- ── Login View ── -->
+    <div id="login-view" class="auth-view" aria-label="Login">
+      <div class="auth-card">
+        <div class="auth-brand">
+          <span class="brand-icon">📚</span>
+          <h1 class="brand-name">PageTurn</h1>
+          <p class="brand-tagline">Your modern bookstore</p>
+        </div>
+        <h2 class="auth-title">Welcome back</h2>
+        <p class="auth-subtitle">Sign in to continue your reading journey</p>
+
+        <div id="login-error" class="error-banner hidden" role="alert"></div>
+
+        <form id="login-form" class="auth-form" novalidate>
+          <div class="form-group">
+            <label for="login-email" class="form-label">Email address</label>
+            <div class="input-wrapper">
+              <span class="input-icon">✉</span>
+              <input
+                type="email"
+                id="login-email"
+                class="form-input"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <span class="field-error" id="login-email-err"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password" class="form-label">Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon">🔒</span>
+              <input
+                type="password"
+                id="login-password"
+                class="form-input"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              />
+              <button type="button" class="toggle-password" id="login-toggle-pwd" aria-label="Toggle password visibility">👁</button>
+            </div>
+            <span class="field-error" id="login-password-err"></span>
+          </div>
+
+          <button type="submit" id="login-btn" class="btn btn-primary btn-full">
+            <span class="btn-text">Sign In</span>
+            <span class="btn-spinner hidden"></span>
+          </button>
+        </form>
+
+        <p class="auth-switch">
+          Don't have an account?
+          <button class="link-btn" id="go-to-register">Create one free</button>
+        </p>
+      </div>
+    </div>
+
+    <!-- ── Register View ── -->
+    <div id="register-view" class="auth-view hidden" aria-label="Register">
+      <div class="auth-card">
+        <div class="auth-brand">
+          <span class="brand-icon">📚</span>
+          <h1 class="brand-name">PageTurn</h1>
+          <p class="brand-tagline">Your modern bookstore</p>
+        </div>
+        <h2 class="auth-title">Create your account</h2>
+        <p class="auth-subtitle">Join thousands of readers today</p>
+
+        <div id="register-error" class="error-banner hidden" role="alert"></div>
+        <div id="register-success" class="success-banner hidden" role="status"></div>
+
+        <form id="register-form" class="auth-form" novalidate>
+          <div class="form-group">
+            <label for="reg-name" class="form-label">Full Name</label>
+            <div class="input-wrapper">
+              <span class="input-icon">👤</span>
+              <input
+                type="text"
+                id="reg-name"
+                class="form-input"
+                placeholder="Jane Doe"
+                autocomplete="name"
+                required
+              />
+            </div>
+            <span class="field-error" id="reg-name-err"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email" class="form-label">Email address</label>
+            <div class="input-wrapper">
+              <span class="input-icon">✉</span>
+              <input
+                type="email"
+                id="reg-email"
+                class="form-input"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <span class="field-error" id="reg-email-err"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-password" class="form-label">Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon">🔒</span>
+              <input
+                type="password"
+                id="reg-password"
+                class="form-input"
+                placeholder="Minimum 6 characters"
+                autocomplete="new-password"
+                required
+              />
+              <button type="button" class="toggle-password" id="reg-toggle-pwd" aria-label="Toggle password visibility">👁</button>
+            </div>
+            <span class="field-error" id="reg-password-err"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-confirm" class="form-label">Confirm Password</label>
+            <div class="input-wrapper">
+              <span class="input-icon">🔒</span>
+              <input
+                type="password"
+                id="reg-confirm"
+                class="form-input"
+                placeholder="Repeat your password"
+                autocomplete="new-password"
+                required
+              />
+            </div>
+            <span class="field-error" id="reg-confirm-err"></span>
+          </div>
+
+          <button type="submit" id="register-btn" class="btn btn-primary btn-full">
+            <span class="btn-text">Create Account</span>
+            <span class="btn-spinner hidden"></span>
+          </button>
+        </form>
+
+        <p class="auth-switch">
+          Already have an account?
+          <button class="link-btn" id="go-to-login">Sign in</button>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       DASHBOARD SECTION
+  ═══════════════════════════════════════ -->
+  <section id="dashboard-section" class="hidden" aria-label="Dashboard">
+
+    <!-- ── Navbar ── -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="navbar-inner">
+        <div class="navbar-brand">
+          <span class="brand-icon-sm">📚</span>
+          <span class="navbar-logo">PageTurn</span>
+        </div>
+
+        <div class="navbar-links" id="navbar-links">
+          <button class="nav-link active" id="nav-explore" aria-label="Explore books">Explore</button>
+          <button class="nav-link" id="nav-bookmarks" aria-label="My Bookmarks">🔖 Bookmarks <span class="bookmark-count" id="bookmark-badge">0</span></button>
+          <button class="nav-link" id="nav-history" aria-label="Reading History">📖 History <span class="bookmark-count" id="history-badge">0</span></button>
+        </div>
+
+        <div class="navbar-right">
+          <div class="user-badge" id="user-badge" aria-label="Logged in user">
+            <span class="user-avatar" id="user-avatar">J</span>
+            <span class="user-name" id="user-name-display">Jane</span>
+          </div>
+          <button class="btn btn-outline btn-sm" id="logout-btn" aria-label="Logout">Logout</button>
+          <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ── Explore View ── -->
+    <div id="explore-view" class="main-content">
+
+      <!-- Hero / Search -->
+      <div class="search-hero">
+        <!-- Floating book decorations (CSS-animated) -->
+        <div class="hero-books" aria-hidden="true">
+          <span class="hb hb-1">📚</span>
+          <span class="hb hb-2">📖</span>
+          <span class="hb hb-3">📝</span>
+          <span class="hb hb-4">📰</span>
+          <span class="hb hb-5">📕</span>
+          <span class="hb hb-6">📗</span>
+          <span class="hb hb-7">✨</span>
+          <span class="hb hb-8">🔭</span>
+        </div>
+
+        <div class="hero-badge">Open Library &bull; 20M+ Books</div>
+        <h2 class="hero-title">
+          Discover Your Next
+          <span class="gradient-text animated-gradient">Favourite Book</span>
+        </h2>
+        <p class="hero-subtitle">Search millions of titles &mdash; from timeless classics to modern gems.</p>
+
+        <!-- Search bar -->
+        <div class="search-bar-wrap">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="search-input"
+            class="search-bar"
+            placeholder="Search by title, author, or topic…"
+            autocomplete="off"
+            aria-label="Search books"
+          />
+          <button class="btn btn-primary btn-search" id="search-btn" aria-label="Search">Search</button>
+        </div>
+
+        <!-- Genre filter tabs -->
+        <div class="genre-row" role="group" aria-label="Quick genre filters">
+          <button class="genre-pill active" data-query="fiction">📚 Fiction</button>
+          <button class="genre-pill" data-query="mystery">🕵️ Mystery</button>
+          <button class="genre-pill" data-query="science fiction">🚀 Sci-Fi</button>
+          <button class="genre-pill" data-query="history">🏛 History</button>
+          <button class="genre-pill" data-query="philosophy">🧯 Philosophy</button>
+          <button class="genre-pill" data-query="biography">🏆 Biography</button>
+          <button class="genre-pill" data-query="horror">🧹 Horror</button>
+          <!-- <button class="genre-pill" data-query="romance">❤️ Romance</button> -->
+        </div>
+      </div>
+
+      <!-- Authors ticker marquee -->
+      <div class="authors-ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>Shakespeare</span><span>⋅</span>
+          <span>Jane Austen</span><span>⋅</span>
+          <span>F. Scott Fitzgerald</span><span>⋅</span>
+          <span>Mark Twain</span><span>⋅</span>
+          <span>George Orwell</span><span>⋅</span>
+          <span>Virginia Woolf</span><span>⋅</span>
+          <span>Leo Tolstoy</span><span>⋅</span>
+          <span>Charles Dickens</span><span>⋅</span>
+          <span>Emily Brontë</span><span>⋅</span>
+          <span>Herman Melville</span><span>⋅</span>
+          <span>Fyodor Dostoevsky</span><span>⋅</span>
+          <!-- duplicate for seamless loop -->
+          <span>Shakespeare</span><span>⋅</span>
+          <span>Jane Austen</span><span>⋅</span>
+          <span>F. Scott Fitzgerald</span><span>⋅</span>
+          <span>Mark Twain</span><span>⋅</span>
+          <span>George Orwell</span><span>⋅</span>
+        </div>
+      </div>
+
+      <!-- Status bar -->
+      <div class="results-meta" id="results-meta" aria-live="polite"></div>
+
+      <!-- Loading: Skeleton cards -->
+      <div id="loading-spinner" class="spinner-wrap hidden" aria-label="Loading books">
+        <div class="skeleton-grid" id="skeleton-cards">
+          <div class="skeleton-card"><div class="sk-cover"></div><div class="sk-body"><div class="sk-line sk-title"></div><div class="sk-line sk-author"></div><div class="sk-line sk-desc"></div></div></div>
+          <div class="skeleton-card"><div class="sk-cover"></div><div class="sk-body"><div class="sk-line sk-title"></div><div class="sk-line sk-author"></div><div class="sk-line sk-desc"></div></div></div>
+          <div class="skeleton-card"><div class="sk-cover"></div><div class="sk-body"><div class="sk-line sk-title"></div><div class="sk-line sk-author"></div><div class="sk-line sk-desc"></div></div></div>
+          <div class="skeleton-card"><div class="sk-cover"></div><div class="sk-body"><div class="sk-line sk-title"></div><div class="sk-line sk-author"></div><div class="sk-line sk-desc"></div></div></div>
+          <div class="skeleton-card"><div class="sk-cover"></div><div class="sk-body"><div class="sk-line sk-title"></div><div class="sk-line sk-author"></div><div class="sk-line sk-desc"></div></div></div>
+          <div class="skeleton-card"><div class="sk-cover"></div><div class="sk-body"><div class="sk-line sk-title"></div><div class="sk-line sk-author"></div><div class="sk-line sk-desc"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Error state -->
+      <div id="api-error" class="empty-state hidden" aria-live="assertive">
+        <div class="empty-icon">⚠</div>
+        <h3>Something went wrong</h3>
+        <p id="api-error-msg">Could not fetch books. Please try again.</p>
+        <button class="btn btn-primary" id="retry-btn">Retry</button>
+      </div>
+
+      <!-- Empty state -->
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">📭</div>
+        <h3>No books found</h3>
+        <p>Try a different search term</p>
+      </div>
+
+      <!-- Book Grid -->
+      <div class="books-grid" id="books-grid" role="list" aria-label="Book results"></div>
+    </div>
+
+    <!-- ── Bookmarks View ── -->
+    <div id="bookmarks-view" class="main-content hidden">
+      <div class="page-header">
+        <h2 class="page-title">🔖 My Bookmarks</h2>
+        <p class="page-subtitle" id="bookmarks-subtitle">Your saved books</p>
+      </div>
+
+      <!-- Loading Spinner for bookmarks -->
+      <div id="bm-empty-state" class="empty-state hidden">
+        <div class="empty-icon">🔖</div>
+        <h3>No bookmarks yet</h3>
+        <p>Tap the bookmark button on any book to save it here</p>
+        <button class="btn btn-primary" id="go-explore-btn">Explore Books</button>
+      </div>
+
+      <div class="books-grid" id="bookmarks-grid" role="list" aria-label="Bookmarked books"></div>
+    </div>
+
+    <!-- ── History View ── -->
+    <div id="history-view" class="main-content hidden">
+      <div class="page-header">
+        <h2 class="page-title">📖 Reading History</h2>
+        <p class="page-subtitle" id="history-subtitle">Books you've opened</p>
+      </div>
+
+      <div id="history-empty-state" class="empty-state hidden">
+        <div class="empty-icon">📖</div>
+        <h3>No reading history yet</h3>
+        <p>Open any book to start your reading journey</p>
+        <button class="btn btn-primary" id="go-explore-from-history">Explore Books</button>
+      </div>
+
+      <div class="books-grid" id="history-grid" role="list" aria-label="Read books"></div>
+    </div>
+
+    <!-- ── User Profile Panel ── -->
+    <div id="profile-panel" class="profile-panel hidden" aria-label="User Profile">
+      <div class="profile-panel-inner">
+        <div class="profile-header">
+          <div class="profile-avatar-lg" id="profile-avatar">U</div>
+          <div class="profile-info">
+            <h3 class="profile-name" id="profile-name">User Name</h3>
+            <p class="profile-email" id="profile-email">email@example.com</p>
+            <p class="profile-joined" id="profile-joined">Joined: —</p>
+          </div>
+        </div>
+        <div class="profile-stats">
+          <div class="profile-stat">
+            <span class="profile-stat-value" id="profile-bookmarks">0</span>
+            <span class="profile-stat-label">🔖 Bookmarks</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat-value" id="profile-history">0</span>
+            <span class="profile-stat-label">📖 Books Read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       READ BOOK MODAL
+  ═══════════════════════════════════════ -->
+  <div id="read-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Book preview">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-book-info">
+          <img id="modal-cover" class="modal-cover" src="" alt="Book cover" />
+          <div>
+            <h3 id="modal-title" class="modal-title"></h3>
+            <p id="modal-author" class="modal-author"></p>
+          </div>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p id="modal-description" class="modal-description"></p>
+        <div class="modal-actions">
+          <button class="btn btn-primary" id="modal-read-btn">
+            <span class="btn-text">📖 Read In Page</span>
+            <span class="btn-spinner hidden"></span>
+          </button>
+          <a id="modal-info-link" class="btn btn-outline" href="#" target="_blank" rel="noopener noreferrer">
+            ℹ Open Library
+          </a>
+        </div>
+
+        <!-- Internet Archive embedded preview -->
+        <div id="ia-preview-wrap" class="ia-preview-wrap hidden">
+          <div class="ia-preview-header">
+            <span>📖 Book Preview</span>
+            <button class="reader-ctrl" id="ia-preview-close" title="Close preview">✕ Close</button>
+          </div>
+          <iframe
+            id="ia-preview-frame"
+            class="ia-preview-frame"
+            src=""
+            allowfullscreen
+            title="Book preview"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <!-- In-page book reader -->
+        <div id="book-reader-wrap" class="book-reader-wrap hidden">
+          <div class="reader-toolbar">
+            <span class="reader-label">📖 In-Page Reader</span>
+            <div class="reader-controls">
+              <button class="reader-ctrl" id="reader-font-sm" title="Smaller text">A−</button>
+              <button class="reader-ctrl" id="reader-font-lg" title="Larger text">A+</button>
+              <button class="reader-ctrl" id="reader-close" title="Close reader">✕</button>
+            </div>
+          </div>
+          <div id="reader-spinner" class="reader-spinner hidden">
+            <div class="spinner"></div>
+            <p>Loading book…</p>
+          </div>
+          <div id="book-reader-content" class="book-reader-content" aria-live="polite"></div>
+        </div>
+
+        <!-- ── Reviews Section ── -->
+        <div class="reviews-section">
+          <h4 class="reviews-title">⭐ Ratings &amp; Reviews</h4>
+          <div class="review-form-wrap">
+            <p class="review-form-label">Your rating</p>
+            <div class="star-input" id="star-input" role="group" aria-label="Rate this book">
+              <button class="star" data-value="1" type="button" aria-label="1 star">★</button>
+              <button class="star" data-value="2" type="button" aria-label="2 stars">★</button>
+              <button class="star" data-value="3" type="button" aria-label="3 stars">★</button>
+              <button class="star" data-value="4" type="button" aria-label="4 stars">★</button>
+              <button class="star" data-value="5" type="button" aria-label="5 stars">★</button>
+            </div>
+            <textarea
+              id="review-text"
+              class="review-textarea"
+              placeholder="Share your thoughts about this book… (optional)"
+              rows="3"
+              aria-label="Write your review"
+            ></textarea>
+            <button class="btn btn-primary btn-sm" id="submit-review-btn" type="button">
+              ⭐ Submit Review
+            </button>
+          </div>
+          <div class="reviews-list" id="reviews-list" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       TOAST NOTIFICATION
+  ═══════════════════════════════════════ -->
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <script src="storage.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

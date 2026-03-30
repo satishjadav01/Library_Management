@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "name": "Demo User",
+      "email": "demo@pageturn.com",
+      "password": "demo123",
+      "joinedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "name": "Alice Sharma",
+      "email": "alice@example.com",
+      "password": "alice123",
+      "joinedAt": "2026-01-15T00:00:00.000Z"
+    },
+    {
+      "name": "Bob Patel",
+      "email": "bob@example.com",
+      "password": "bob12345",
+      "joinedAt": "2026-02-01T00:00:00.000Z"
+    }
+  ]
+}
